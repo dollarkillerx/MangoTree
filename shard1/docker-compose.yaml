@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  mongo_shard1_server:
+    network_mode: bridge
+    image: mongo:latest
+    restart: always
+    ports:
+      - 37017:37017
+    volumes:
+      - ./mongo_shard1_data:/data/mongodb
+      - ./mongo_shard1_log:/data/logs
+      - /usr/share/zoneinfo:/usr/share/zoneinfo
+      - ./config/shard1.conf:/etc/mongo/mongodb_shard1.conf
+      - ./config/security.key:/etc/mongo/mongo.key
+      - ./run.sh:/data/run.sh
+    command:
+      bash /data/run.sh
+
+

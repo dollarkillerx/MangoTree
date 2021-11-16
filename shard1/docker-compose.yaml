@@ -2,11 +2,11 @@ version: '3.1'
 
 services:
   mongo_shard1_server:
-    network_mode: bridge
+    network_mode: host
     image: mongo:latest
     restart: always
     ports:
-      - 37017:37017
+      - 37018:37018
     volumes:
       - ./mongo_shard1_data:/data/mongodb
       - ./mongo_shard1_log:/data/logs

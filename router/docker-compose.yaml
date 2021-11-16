@@ -1,17 +1,17 @@
 version: '3.1'
 
 services:
-  mongo_config_server:
+  mongo_shard1_server:
     network_mode: host
     image: mongo:latest
     restart: always
     ports:
-      - 37017:37017
+      - 37019:37019
     volumes:
-      - ./mongo_config_server_data:/data/mongodb
-      - ./mongo_config_server_log:/data/logs
+      - ./mongo_router_data:/data/mongodb
+      - ./mongo_router_log:/data/logs
       - /usr/share/zoneinfo:/usr/share/zoneinfo
-      - ./config/mongodb_config_server.conf:/etc/mongo/mongodb_config_server.conf
+      - ./config/router.conf:/etc/mongo/mongodb_router.conf
       - ./config/security.key:/etc/mongo/mongo.key
       - ./run.sh:/data/run.sh
     command:
